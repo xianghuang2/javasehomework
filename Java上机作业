@@ -1,0 +1,18 @@
+public class Main {
+	static public void main(String []argc) {
+		char ch='α';
+		char cd='ω';
+		char ce;
+		int a,b;
+		a=(int)ch;
+		b=(int)cd;
+		System.out.println("α的Unicode编码为:"+a);
+		System.out.println("ω的Unicode编码为:"+b);
+		int i;
+		for(i=a;i<=b;i++)
+		{
+			ce=(char)i;
+			System.out.print(" "+ce);
+		}
+	}
+}
