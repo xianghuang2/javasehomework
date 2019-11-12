@@ -1,3 +1,4 @@
+第一题：
 public class Vehicle {
 	double speed;
 	int power;
@@ -97,4 +98,139 @@ public class User {
         System.out.println("car4目前的速度："+car4.getSpeed());
 		}
 }
+第二题：
+package Stucard;
+
+public class Stucard {
+	private	long xh;
+	private	String xm;
+	private	String xb;
+	private	String zy;
+	private	String nj;
+	private	String jg;
+	public	Stucard(long a,String m,String b,String y,String j,String g)
+		{
+			xh=a;
+			xm=m;
+			xb=b;
+			zy=y;
+			nj=j;
+			jg=g;
+		}
+	public	void set(long a,String m,String b,String y,String j,String g)
+		{
+			xh=a;
+			xm=m;
+			xb=b;
+			zy=y;
+			nj=j;
+			jg=g;
+		}
+	public void get()
+	{
+		System.out.println("学号："+xh);
+		System.out.println("姓名："+xm);
+		System.out.println("性别："+xb);
+		System.out.println("专业："+zy);
+		System.out.println("年级："+nj);
+		System.out.println("籍贯："+jg);
+	}
+	public void changexh(long a)
+	{
+		xh=a;
+	}
+	public void changexm(String a)
+	{
+		xm=a;
+	}
+	public void changexb(String a)
+	{
+		xb=a;
+	}
+	public void changezy(String a)
+	{
+		zy=a;
+	}
+	public void changenj(String a)
+	{
+		nj=a;
+	}
+	public void changejg(String a)
+	{
+		jg=a;
+	}
+}
+package Stucard;
+
+public class zhulei {
+public static void main(String args[])
+{
+	Stucard zsh=new Stucard(180320,"赵帅华","男","计算机","二年级","山东");
+	zsh.get();
+	zsh.set(180318,"黄祥","男","计算机","二年级","江西");
+	zsh.get();
+	zsh.changexb("女");
+	zsh.changezy("老板");
+	zsh.get();
+}
+}
+第三题：
+Test.Java
+public class Test {
+static public void main(String []argc) {
+		CPU cpu=new CPU();
+		cpu.setSpeed(2200);
+		HardDisk disk=new HardDisk();
+		disk.setAmount(200);
+		PC pc=new PC();
+		pc.setCPU(cpu);
+		pc.setHardDisk(disk);
+		pc.show();
+	}
+}
+PC.Java
+public class PC {
+
+	CPU cpu=new CPU();
+	HardDisk HD=new HardDisk();
+	void setHardDisk(HardDisk h)
+	{
+		HD=h;
+	}
+	void setCPU(CPU c)
+	{
+		cpu=c;
+	}
+	void show()
+	{
+		System.out.println("cpu的速度："+cpu.getSpeed());
+		System.out.println("硬盘的容量："+HD.getAmount());
+	}
+}
+CPU.Java
+public class CPU {
+     int speed;
+     int getSpeed()
+     {
+    	 return speed;
+     }
+     void setSpeed(int m)
+     {
+    	 speed=m;
+     }
+}
+HardDisk.Java
+public class HardDisk {
+
+	int amount;
+	int getAmount()
+	{
+		return amount;
+	}
+	void setAmount(int m)
+	{
+		amount=m;
+	}
+}
+
 
