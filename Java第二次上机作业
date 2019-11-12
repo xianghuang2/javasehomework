@@ -99,16 +99,16 @@ public class User {
 		}
 }
 第二题：
-package Stucard;
+package bao1;
 
-public class Stucard {
-	private	long xh;
-	private	String xm;
-	private	String xb;
-	private	String zy;
-	private	String nj;
-	private	String jg;
-	public	Stucard(long a,String m,String b,String y,String j,String g)
+public class StuCard {
+		long xh;
+		String xm;
+		String xb;
+		String zy;
+	String nj;
+		String jg;
+	public	StuCard(long a,String m,String b,String y,String j,String g)
 		{
 			xh=a;
 			xm=m;
@@ -160,20 +160,20 @@ public class Stucard {
 		jg=a;
 	}
 }
-package Stucard;
+package bao2;
+import bao1.StuCard;
+public class main {
+	public static void main(String args[]){
+		StuCard zsh=new StuCard(180320,"赵帅华","男","计算机","二年级","山东");
+		zsh.get();
+		zsh.set(180318,"黄祥","男","计算机","二年级","江西");
+		zsh.get();
+		zsh.changexb("女");
+		zsh.changezy("老板");
+		zsh.get();
+	}
+}
 
-public class zhulei {
-public static void main(String args[])
-{
-	Stucard zsh=new Stucard(180320,"赵帅华","男","计算机","二年级","山东");
-	zsh.get();
-	zsh.set(180318,"黄祥","男","计算机","二年级","江西");
-	zsh.get();
-	zsh.changexb("女");
-	zsh.changezy("老板");
-	zsh.get();
-}
-}
 第三题：
 Test.Java
 public class Test {
