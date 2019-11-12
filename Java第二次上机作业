@@ -271,5 +271,6 @@ public class Land {
 		village2.seewaterAmount();
 	}
 }
-
+第五题：
+sum=-100
 
