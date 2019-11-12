@@ -232,5 +232,44 @@ public class HardDisk {
 		amount=m;
 	}
 }
+第四题：
+Village.Java
+public class Village {
+     static int waterAmount=1000;
+     int peopleNumber;
+     String name;
+     void addwaterAmount(int a)
+     {
+    	 waterAmount+=a;
+     }
+     void reducewaterAmount(int a)
+     {
+    	 waterAmount-=a;
+     }
+     void seewaterAmount()
+     {
+    	 System.out.println(waterAmount);
+     }
+     void set(String mc,int m)
+     {
+    	 name=mc;
+    	 peopleNumber=m;
+     }
+}
+Land.Java
+public class Land {
+
+	static public void main(String []argc) {
+	
+		Village village1=new Village();
+		Village village2=new Village();
+		village1.set("王庄", 100);
+		village2.set("刘庄", 200);
+		village1.seewaterAmount();
+		village2.seewaterAmount();
+		village1.reducewaterAmount(30);
+		village2.seewaterAmount();
+	}
+}
 
 
