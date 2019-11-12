@@ -277,3 +277,81 @@ sum=-100
 第二个this.y=y,使得y=-200
 最后x=100,y=-200,因此sum=-100
 第六题：
+777
+开始时参数n为20，调用add（b）函数后n变为777，最后再输出b的函数值
+第七题：
+27
+因为是静态变量故调用函数后结果为1+2+3+1+2+3+1+2+3+4+5=27
+第八题：
+class A{
+
+int x=100;
+
+static long y;
+
+y=200;
+
+public void f(){
+
+y=300;
+
+}
+
+public static void g(){
+
+x=-23;
+
+}
+
+}
+因为y是static类型变量，赋值不能在后面语句中进行，应该改为static long y=200;g()为静态函数，
+不能直接对x进行赋值语句应该将int x=100改为static int x=100;
+或者将public static void g()改为public void g()
+第九题:
+class Tom{
+
+private int x=120;
+
+protected int y=20;
+
+int z=11;
+
+private void f(){
+
+x=200;
+
+System.out.println(x);
+
+}
+
+void g(){
+
+x=200;
+
+System.out.println(x);
+
+}
+
+}
+
+public class A{
+
+public static void main(String args[]){
+
+Tom tom=new Tom();
+
+tom.x=22;
+
+tom.y=33;
+
+tom.z=55;
+
+tom.f();
+
+tom.g();
+
+}
+
+}
+因为x是私有成员在类A中不能直接对它进行访问，应该将private int x=120;改为public int x=120;或者protected int x=120;
+f()函数也是私有成员，不能直接对它进行访问，应该将private void f()改写为public void f()或者protected void f()
