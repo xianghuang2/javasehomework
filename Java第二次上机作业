@@ -1,0 +1,100 @@
+public class Vehicle {
+	double speed;
+	int power;
+    Vehicle(double a,int b)
+    {
+    	speed=a;
+    	power=b;
+    }
+    Vehicle()
+    {
+    	
+    }
+	void speedUp(int s)
+
+	{
+   if(speed<=200&&speed+s<=200)
+	speed+=s;
+   else
+   {
+	  speed=200;
+   }
+	}
+
+	void speedDown(int d)
+
+	{
+     if(speed-d>=0)
+	speed-=d;
+     else
+     {speed=0;
+     
+     }
+	}
+    void brake()
+    {
+    	speed=0;
+    }
+	void setPower(int p)
+
+	{
+
+	power=p;
+
+	}
+
+	int getPower()
+
+	{
+
+	return power;
+
+	}
+
+	double getSpeed()
+
+	{
+
+	return speed;
+
+	}
+}
+public class User {
+	public static void main(String args[]){
+
+		Vehicle car1,car2;
+        Vehicle car3=new Vehicle(80,80);
+        Vehicle car4=new Vehicle(150,150);
+		car1=new Vehicle();
+
+		car2=new Vehicle();
+
+		car1.setPower(128);
+
+		car2.setPower(76);
+
+		System.out.println("car1的功率是："+car1.getPower());
+
+		System.out.println("car2的功率是："+car2.getPower());
+        System.out.println("car3的功率是："+car3.getPower());
+	   car1.speedUp(80);
+
+		car2.speedUp(80);
+       car4.speedUp(100);
+		System.out.println("car1目前的速度："+car1.getSpeed());
+		System.out.println("car2目前的速度："+car2.getSpeed());
+        System.out.println("car3目前的速度："+car3.getSpeed());
+        System.out.println("car4目前的速度："+car4.getSpeed());
+		car1.speedDown(10);
+
+		car2.speedDown(20);
+        car3.speedDown(30);
+        car4.speedDown(400);
+		System.out.println("car1目前的速度："+car1.getSpeed());
+
+		System.out.println("car2目前的速度："+car2.getSpeed());
+        System.out.println("car3目前的速度："+car3.getSpeed());
+        System.out.println("car4目前的速度："+car4.getSpeed());
+		}
+}
+
