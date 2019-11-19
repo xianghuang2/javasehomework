@@ -96,7 +96,7 @@ public class Main {
 }
 
 第二题：
-public class bank {
+class bank {
     int savedMoney;
     int year;
     double interest;
@@ -143,7 +143,25 @@ class BankOfQingDao extends bank{
     	 s=super.computerInterest()+0.00015*(year-super.year)*super.savedMoney;
     	 return s;
      }
-} public class Main {
+}
+class Shangyebank extends bank{
+	 double year;
+     double s;
+     int savedMoney;
+     void Shang(double a,int b)
+     {
+    	 year=a;
+    	 savedMoney=b;
+     }
+     double computerInterest()
+     {
+    	 super.year=(int)year;
+    	 super.savedMoney=savedMoney;
+    	 s=super.computerInterest()+0.00012*(year-super.year)*super.savedMoney;
+    	 return s;
+     }
+}
+public class Main2 {
 	static public void main(String []argc)
 	{
 		//bank a1=new bank();
@@ -158,5 +176,8 @@ class BankOfQingDao extends bank{
 		System.out.println("青岛银行利息："+s3);
 		double s1=s3-s2;
 		System.out.println("利息差额为："+s1);
+		Shangyebank a4=new Shangyebank();
+		a4.Shang(8.236,8000);
+		double s4=a4.computerInterest();
+		System.out.println("商业银行利息："+s4);
 	}
-}
