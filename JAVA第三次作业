@@ -181,3 +181,60 @@ public class Main2 {
 		double s4=a4.computerInterest();
 		System.out.println("商业银行利息："+s4);
 	}
+abstract class SIM{
+	public abstract String giveNumber();
+	public abstract void setNumber(String n);
+	public abstract String giveCorpName();
+	
+}
+class MobileTelephone{
+	SIM card;
+	public void useSIM(SIM card)
+	{
+		this.card=card;
+	}
+	public void showMess()
+	{
+		System.out.println("使用的卡是："+card.giveCorpName()+"提供的");
+		System.out.println("手机号码是："+card.giveNumber());
+	}
+}
+class SIMOfChinaMobile extends SIM{
+	String number;
+	public String giveNumber()
+	{
+		return number;
+	}
+	public String giveCorpName()
+	{
+		return "中国移动";
+	}
+	public void setNumber(String n)
+	{
+		number=n;
+	}
+}
+class SIMOfChinaUnicom extends SIM{
+	String number;
+	public String giveNumber()
+	{
+		return number;
+	}
+	public String giveCorpName()
+	{
+		return "中国联通";
+	}
+	public void setNumber(String n)
+	{
+		number=n;
+	}
+}
+public class Main {
+	static public void main(String []argc) {
+		MobileTelephone telephone=new MobileTelephone();
+		SIM sim=new  SIMOfChinaMobile();
+		sim.setNumber("13097656437");
+		
+	}
+     
+}
