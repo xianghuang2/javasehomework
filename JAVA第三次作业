@@ -1,0 +1,162 @@
+第一题：
+class People{
+	protected double height;
+	protected double weight;
+	void eople(double a,double b)
+	{
+		height=a;
+		weight=b;
+	}
+	public void speakHello(){
+		System.out.println("Hello");
+	}
+	public void averageHeight()
+	{
+		System.out.println("PeoPle"+height);
+	}
+	public void averageWeight()
+	{
+		System.out.println("PeoPle"+weight);
+	}
+
+}
+class ChinaPeople extends People{
+	
+	public void speakHello()
+	{
+		System.out.println("Hello China");
+	}
+	public void averageHeight()
+	{
+		System.out.println("ChinaPeoPle"+height);
+	}
+	public void averageWeight()
+	{
+		System.out.println("ChinaPeoPle"+weight);
+	}
+	public void chinaGongfu()
+	{
+		System.out.println("咏春");
+	}
+}
+class AmericanPeople extends People{
+	public void speakHello()
+	{
+		System.out.println("Hello American");
+	}
+	public void averageHeight()
+	{
+		System.out.println("AmericanPeoPle"+height);
+	}
+	public void averageWeight()
+	{
+		System.out.println("AmericanPeoPle"+weight);
+	}
+	public void americanBoxing()
+	{
+		System.out.println("americanboxing");
+	}
+}
+class BeijingPeople extends ChinaPeople{
+	public void beijingOpera()
+	{
+		System.out.println("我是北京人");
+	}
+}
+public class Main {
+	static public void main(String []argc) {
+		People a=new People();
+		ChinaPeople a1=new ChinaPeople();
+		AmericanPeople a2=new AmericanPeople();
+		BeijingPeople a3=new BeijingPeople();
+		a.eople(170, 100);
+		System.out.println("调用People中的方法");
+		a.speakHello();
+		a.averageHeight();
+		a.averageWeight();
+		System.out.println("调用ChinaPeople中的方法");
+		a1.eople(170, 100);
+		a2.eople(170, 100);
+		a3.eople(170, 100);
+		a1.chinaGongfu();
+		a1.speakHello();
+		a1.averageHeight();
+		a1.averageWeight();
+		System.out.println("下面调用AmericanPeople中的方法");
+		a2.americanBoxing();
+		a2.speakHello();
+		a2.averageHeight();
+		a2.averageWeight();
+		System.out.println("下面调用BeijingPeople中的方法");
+		a3.beijingOpera();
+		a3.speakHello();
+		a3.averageHeight();
+		a3.averageWeight();
+	}
+}
+
+第二题：
+public class bank {
+    int savedMoney;
+    int year;
+    double interest;
+    double computerInterest() {
+		interest=year*0.035*savedMoney;
+		return interest;
+	}
+    void ank(int a,int b)
+    {
+    	savedMoney=a;
+    	year=b;
+    }
+}
+class ConstructionBank extends bank {
+     double year;
+     double s;
+     int savedMoney;
+     void con(double a,int b)
+     {
+    	 year=a;
+    	 savedMoney=b;
+     }
+     double computerInterest()
+     {
+    	 super.year=(int)year;
+    	 super.savedMoney=savedMoney;
+    	 s=super.computerInterest()+0.0001*(year-super.year)*super.savedMoney;
+    	 return s;
+     }
+}
+class BankOfQingDao extends bank{
+	 double year;
+     double s;
+     int savedMoney;
+     void qing(double a,int b)
+     {
+    	 year=a;
+    	 savedMoney=b;
+     }
+     double computerInterest()
+     {
+    	 super.year=(int)year;
+    	 super.savedMoney=savedMoney;
+    	 s=super.computerInterest()+0.00015*(year-super.year)*super.savedMoney;
+    	 return s;
+     }
+} public class Main {
+	static public void main(String []argc)
+	{
+		//bank a1=new bank();
+		ConstructionBank a2= new ConstructionBank();
+		BankOfQingDao a3=new BankOfQingDao();
+		a2.con(5.216, 50000);
+		double s2;
+		s2=a2.computerInterest();
+		a3.qing(5.216, 50000);
+		double s3=a3.computerInterest();
+		System.out.println("建设银行利息："+s2);
+		System.out.println("青岛银行利息："+s3);
+		double s1=s3-s2;
+		System.out.println("利息差额为："+s1);
+	}
+}
