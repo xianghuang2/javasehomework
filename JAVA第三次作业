@@ -316,3 +316,55 @@ public class Mytest
         System.out.println("需要支付的总工资:"+sum);
     }
 }
+第五题：
+abstract class Figure{
+    abstract double area();
+}
+class Circle extends Figure{
+    double r;
+    Circle(double a)
+    {
+        r=a;
+    }
+
+    double area() {
+        return 3.14*r*r;
+    }
+}
+class Rectangle extends Figure{
+    double length;
+    double width;
+    Rectangle(double a,double b)
+    {
+        length=a;width=b;
+    }
+    double area()
+    {
+        return length*width;
+    }
+}
+class Triangle extends Figure{
+    double high;
+    double bottom;
+    Triangle(double a,double b)
+    {
+        high=a;bottom=b;
+    }
+
+    double area()
+    {
+        return high*bottom*0.5;
+    }
+}
+public class Main {
+  public static void main(String args[])
+  {
+      Figure[] a=new Figure[3];
+      a[0]=new Circle(2);
+      a[1]=new Rectangle(4,5);
+      a[2]=new Triangle(4,5);
+      System.out.println("圆的的面积:"+a[0].area());
+      System.out.println("矩形的面积:"+a[1].area());
+      System.out.println("三角形的面积:"+a[2].area());
+  }
+}
