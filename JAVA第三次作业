@@ -182,7 +182,7 @@ public class Main2 {
 		System.out.println("商业银行利息："+s4);
 	}
 	
-第四题：
+第三题：
  abstract class SIM{
     public abstract String giveNumber();
     public abstract void setNumber(String n);
@@ -244,4 +244,75 @@ public class Mytest {
         telephone.showMess();
     }
 
+}
+第四题：
+abstract class Employee
+{
+public abstract double earnings();
+}
+class YearWorker extends Employee
+{
+    int y;
+    double ys;
+    YearWorker(int a,double b)
+    {
+        y=a;
+        ys=b;
+    }
+
+public double earnings()
+{
+    return y*ys;
+}
+}
+class MonthWorker extends Employee
+{
+    int y;
+    double ys;
+    MonthWorker(int a,double b)
+    {
+        y=a;
+        ys=b;
+    }
+
+    public double earnings()
+    {
+        return y*ys;
+    }
+}
+class WeekWorker extends Employee
+{
+    int y;
+    double ys;
+    WeekWorker(int a,double b)
+    {
+        y=a;
+        ys=b;
+    }
+
+    public double earnings()
+    {
+        return y*ys;
+    }
+}
+class Company{
+    Employee[] a;
+    Company(Employee[] a)
+    {
+        this.a=a;
+    }
+}
+public class Mytest
+{
+    public static void main(String args[])
+    {
+        Employee[] a=new Employee[3];
+        a[0]=new YearWorker(1,120000);
+        a[1]=new MonthWorker(12,20000);
+        a[2]=new WeekWorker(52,5000);
+        Company com=new Company(a);
+        double sum;
+        sum=a[0].earnings()+a[1].earnings()+a[2].earnings();
+        System.out.println("需要支付的总工资:"+sum);
+    }
 }
