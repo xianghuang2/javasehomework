@@ -173,3 +173,81 @@ public class MobileShop {
         }
     }
 }
+第四题：
+class DangerException extends Exception{
+     String message;
+     public DangerException(){
+         message="危险品!";
+     }
+     public void toShow(){
+         System.out.print(message+" ");
+     }
+}
+class Goods{
+    boolean isDanger;
+    String name;
+    void setIsDanger(boolean bo)
+    {
+        isDanger=bo;
+    }
+    boolean isDanger()
+    {
+        return isDanger;
+    }
+    void setName(String s)
+    {
+        name=s;
+    }
+    String getName()
+    {
+        return name;
+    }
+}
+class Machine{
+    void CheckBag(Goods goods)  throws DangerException
+    {
+        if(goods.isDanger())
+        {
+            DangerException danger=new DangerException();
+            throw danger;//抛出danger;
+        }
+        else
+        {
+            System.out.println(goods.getName()+"不是危险品！");
+        }
+    }
+}
+public class main {
+    public static void main(String args[])
+    {
+        Machine machine=new Machine();
+        String name[]={"炸药","书本","火药","枫哥","硫酸","华仔"};
+        Goods goods[]=new Goods[name.length];
+        for(int i=0;i<name.length;i++)
+        {
+            goods[i]=new Goods();
+            if(i%2==1)
+            {
+                goods[i].setIsDanger(false);
+                goods[i].setName(name[i]);
+            }
+            else
+            {
+                goods[i].setIsDanger(true);
+                goods[i].setName(name[i]);
+            }
+        }
+        for(int i=0;i<goods.length;i++)
+        {
+            try {
+                machine.CheckBag(goods[i]);
+                System.out.println(goods[i].getName()+"检查通过");
+            }
+            catch (DangerException e)
+            {
+               e.toShow();
+                System.out.println(goods[i].getName()+"被禁止!");
+            }
+        }
+    }
+}
