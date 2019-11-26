@@ -53,3 +53,75 @@ public class Application {
 
     }
 }
+第二题：
+import java.util.Scanner;
+interface ComputerAverage{
+    double Average();
+}
+class Gymnastics implements ComputerAverage{
+    int a[];
+    Gymnastics(int b[])
+    {
+        a=b;
+    }
+   public double Average()
+    {
+        double s=0;
+        int min=a[0];
+        int max=a[0];
+        for(int i=0;i<a.length;i++)
+        {
+            if(min>a[i])
+            {
+                min=a[i];
+            }
+            if(max<a[i])
+            {
+                max=a[i];
+            }
+        }
+       for(int i=0;i<a.length;i++)
+       {
+           s+=a[i];
+       }
+       s=s-min-max;
+       s=s/(a.length-2);
+       return s;
+    }
+}
+class School implements ComputerAverage{
+    int a[];
+    School(int b[])
+    {
+        a=b;
+    }
+    public double Average() {
+        double s=0;
+        for(int i=0;i<a.length;i++)
+        {
+            s+=a[i];
+        }
+        s=s/(a.length);
+        return s;
+    }
+}
+public class Main2 {
+    public static void main(String args[])
+    {
+        System.out.println("请输入成绩的个数n：");
+        int n;
+        Scanner reader=new Scanner(System.in);
+        n=reader.nextInt();
+        int a[]=new int[n];
+        System.out.println("请输入各个成绩：");
+        for(int i=0;i<n;i++)
+        {
+            Scanner read=new Scanner(System.in);
+            a[i]=read.nextInt();
+        }
+        ComputerAverage ad=new Gymnastics(a);
+        System.out.println("体操比赛平均分为："+ad.Average());
+        ad=new School(a);
+        System.out.println("全班同学的平均成绩为："+ad.Average());
+    }
+}
