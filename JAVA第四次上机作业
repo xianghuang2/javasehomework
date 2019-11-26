@@ -251,3 +251,25 @@ public class main {
         }
     }
 }
+第五题：
+15.0
+8
+因为A a=new B();类似于上转型所以a.f(3,5)为3*5=15.0又将a强转为（B）b.g(3,5)=3+5=8
+第六题：
+p是接口变量
+因为com p=new com{public void speak()
+{System.out.println("p是接口变量")
+}}创建的是一个匿名类。
+第七题：
+96
+乘数超过99
+因为try{
+System.out.println(a.f(12,8)+" ");
+}时x<=99&&y<=99所以不用可以继续执行语句return x*y=96;
+当执行语句try{
+System.out.println(a.f(120,3)+" ")
+时x>100则throw new MyException("乘数超过99");
+并执行catch语句 catch(MyException e) {
+            System.out.print(e.getMessage());
+        }从而输出“乘数超过99”。
+}
