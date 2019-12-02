@@ -1,171 +1,357 @@
-import java.util.Scanner;
+
+      import java.util.Scanner;
+
+
 
 public class banqun {
+
     public static void main(String args[])
+
     {
+
         int fengbi=0;
-        char A[]={'a','b','c','d'};
+
+        char A[]={'a','b','c','d','e'};
+
         int ad=A.length;
+
         char f[][]=new char[ad][ad];
+
         System.out.println("请给二维矩阵赋值");
+        System.out.println("输入格式如下：");
+        System.out.println("a b c d e");
+        System.out.println("a b c d e");
+        System.out.println("a b c d e");
+        System.out.println("a b c d e");
+        System.out.println("a b c d e");
         for(int i=0;i<ad;i++)
         {
-           for(int j=0;j<ad;j++)
-           {
-               Scanner reader=new Scanner(System.in);
-               f[i][j]=reader.next().charAt(0);
-           }
+            Scanner reader=new Scanner(System.in);
+               String s1=reader.nextLine();
+                String regex="[^ ]+[ ]+[^ ]+[ ]+[^ ]+[ ]+[^ ]+[ ]+[^ ]";
+                int ip=0;
+                while(ip==0)
+                {
+                    if(s1.matches(regex))
+                    {
+                        ip=1;
+                    }
+                    else
+                    {
+                        System.out.println("输入格式错误，请重新输入此行：");
+                        Scanner reader1=new Scanner(System.in);
+                         s1=reader1.nextLine();
+                    }
+                }
+                char ss[]=s1.toCharArray();
+                for(int j=0;j<ad;j++)
+                {
+
+                    f[i][j]=ss[2*j];
+                }
         }
+
         for(int i=0;i<ad;i++)
+
         {
+
             for(int j=0;j<ad;j++)
+
             {
-               for(int k=0;k<ad;k++)
-               {
+
+                for(int k=0;k<ad;k++)
+
+                {
+
                     fengbi=0;
-                   if(f[i][j]==A[k])
-                       {
-                           fengbi=1;
-                          break;
-                       }
-               }
-               if(fengbi==0)
-               {
-                   System.out.println(A[i]+"*"+A[j]+"不属于A,<A,*>不具有封闭性");
-                   System.out.println("由于不封闭，所以<A,*>不是半群");
-                   return;
-               }
+
+                    if(f[i][j]==A[k])
+
+                    {
+
+                        fengbi=1;
+
+                        break;
+
+                    }
+
+                }
+
+                if(fengbi==0)
+
+                {
+
+                    System.out.println(A[i]+"*"+A[j]+"不属于A,<A,*>不具有封闭性");
+
+                    System.out.println("由于不封闭，所以<A,*>不是半群");
+
+                    return;
+
+                }
+
             }
+
         }
+
         for(int i=0;i<ad;i++)
+
         {
+
             for(int j=0;j<ad;j++)
+
             {
+
                 char ch;
+
                 int p=0;
+
                 ch=f[i][j];
+
                 for(int k=0;k<ad;k++)
+
                 {
+
                     if(ch==A[k])
+
                     {
+
                         p=k;break;
+
                     }
+
                 }
+
                 for(int k=0;k<ad;k++)
+
                 {
+
                     ch=f[p][k];
+
                     char cd;
+
                     cd=f[j][k];
+
                     int q=0;
+
                     for(int ol=0;ol<ad;ol++)
+
                     {
+
                         if(cd==A[ol])
+
                         {
+
                             q=ol;break;
+
                         }
+
                     }
+
                     cd=f[i][q];
+
                     if(ch!=cd)
+
                     {
+
                         System.out.println("不满足结合律，故<A,*>不构成半群");
+
                         return;
+
                     }
+
                 }
+
             }
+
         }
+
         System.out.println("满足结合律，<A,*>构成半群");
+
         char e1[]=new char[ad];
+
         int ko=0;
+
         for(int i=0;i<ad;i++)
+
         {
+
             int j=0;
+
             for(j=0;j<ad;j++)
+
             {
+
                 if(f[i][j]!=A[j])
+
                 {
+
                     break;
+
                 }
+
             }
+
             if(j==ad)
+
             {
+
                 System.out.println(A[i]+"为<A,*>的左幺元");
-               e1[ko]=A[i];
-               ko++;
+
+                e1[ko]=A[i];
+
+                ko++;
+
             }
+
         }
+
         char e2[]=new char[ad];
+
         int kl=0;
+
         char ey='r';
-       for(int j=0;j<ad;j++)
-       {
-           int i=0;
-           for(i=0;i<ad;i++)
-           {
-               if(f[i][j]!=A[i])
-               {
-                   break;
-               }
-           }
-           if(i==ad)
-           {
-               System.out.println(A[j]+"为<A,*>的右幺元");
-               e2[kl]=A[j];
-               kl++;
-           }
-       }
-       int duyi=0;
-       for(int i=0;i<ko;i++)
-       {
-           for(int j=0;j<kl;j++)
-           {
-               if(e1[i]==e2[j])
-               {
-                   System.out.println(e1[i]+"为<A,*>的幺元，<A,*>是独异点");
-                   duyi=1;
-                   ey=e1[i];
-                   break;
-               }
-           }
-           if(duyi==1) break;
-       }
-       if(duyi==0)
-       {
-           System.out.println("<A,*>无幺元，<A,*>不是独异点");
-           return;
-       }
-       for(int i=0;i<ad;i++)
-       {
-           int j=0;
-           for(j=0;j<ad;j++)
-           {
-               if(f[i][j]==ey)
-               {
-                   break;
-               }
-           }
-           if(j==ad)
-           {
-               System.out.println(A[i]+"没有右逆元，<A,*>不是群");
-               return;
-           }
-       }
-       for(int j=0;j<ad;j++)
-       {
-           int i=0;
-           for(i=0;i<ad;i++)
-           {
-               if(f[i][j]==ey)
-               {
-                   break;
-               }
-           }
-           if(i==ad)
-           {
-               System.out.println(A[j]+"没有左逆元，<A,*>不是群");
-               return;
-           }
-       }
-       System.out.println("<A,*>是群");
+
+        for(int j=0;j<ad;j++)
+
+        {
+
+            int i=0;
+
+            for(i=0;i<ad;i++)
+
+            {
+
+                if(f[i][j]!=A[i])
+
+                {
+
+                    break;
+
+                }
+
+            }
+
+            if(i==ad)
+
+            {
+
+                System.out.println(A[j]+"为<A,*>的右幺元");
+
+                e2[kl]=A[j];
+
+                kl++;
+
+            }
+
+        }
+
+        int duyi=0;
+
+        for(int i=0;i<ko;i++)
+
+        {
+
+            for(int j=0;j<kl;j++)
+
+            {
+
+                if(e1[i]==e2[j])
+
+                {
+
+                    System.out.println(e1[i]+"为<A,*>的幺元，<A,*>是独异点");
+
+                    duyi=1;
+
+                    ey=e1[i];
+
+                    break;
+
+                }
+
+            }
+
+            if(duyi==1) break;
+
+        }
+
+        if(duyi==0)
+
+        {
+
+            System.out.println("<A,*>无幺元，<A,*>不是独异点");
+
+            return;
+
+        }
+
+        for(int i=0;i<ad;i++)
+
+        {
+
+            int j=0;
+
+            for(j=0;j<ad;j++)
+
+            {
+
+                if(f[i][j]==ey)
+
+                {
+
+                    break;
+
+                }
+
+            }
+
+            if(j==ad)
+
+            {
+
+                System.out.println(A[i]+"没有右逆元，<A,*>不是群");
+
+                return;
+
+            }
+
+        }
+
+        for(int j=0;j<ad;j++)
+
+        {
+
+            int i=0;
+
+            for(i=0;i<ad;i++)
+
+            {
+
+                if(f[i][j]==ey)
+
+                {
+
+                    break;
+
+                }
+
+            }
+
+            if(i==ad)
+
+            {
+
+                System.out.println(A[j]+"没有左逆元，<A,*>不是群");
+
+                return;
+
+            }
+
+        }
+
+        System.out.println("<A,*>是群");
+
     }
+
 }
 
