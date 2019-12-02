@@ -71,3 +71,73 @@ public class CaiDan {
         System.out.println("总价格为："+s);
     }
 }
+
+第三题：
+import java.util.Scanner;
+public class riqi {
+    public static void main(String args[])
+    {
+        System.out.println("输入日期的格式如下：1999.10.10");
+        System.out.println("请输入第一个日期：");
+        Scanner reader1=new Scanner(System.in);
+        String s1=reader1.nextLine();
+        String regex="\\d{1,}+[.]+\\d{1,2}+[.]+\\d{1,2}";
+        int i1=0;
+        while(i1==0)
+        {
+            if(s1.matches(regex))
+        {
+            i1=1;
+        }
+            else
+            {
+                System.out.println("输入格式错误，请重新输入：");
+                Scanner reader11=new Scanner(System.in);
+                 s1=reader11.nextLine();
+            }
+        }
+        System.out.println("请输入第二个日期：");
+        Scanner reader2=new Scanner(System.in);
+        String s2=reader2.nextLine();
+        int i2=0;
+        while(i2==0)
+        {
+            if(s2.matches(regex))
+            {
+                i2=1;
+            }
+            else
+            {
+                System.out.println("输入格式错误，请重新输入：");
+                Scanner reader22=new Scanner(System.in);
+                s2=reader22.nextLine();
+            }
+        }
+        int index1=s1.indexOf(".");
+        String nian1=s1.substring(0,index1);
+        int index11=s1.indexOf(".",index1+1);
+        String yue1=s1.substring(index1+1,index11);
+        String ri1=s1.substring(index11+1);
+        int sum1=365*Integer.parseInt(nian1.trim())+30*Integer.parseInt(yue1.trim())+Integer.parseInt(ri1.trim());
+        int index2=s2.indexOf(".");
+        String nian2=s2.substring(0,index2);
+        int index22=s2.indexOf(".",index2+1);
+        String yue2=s2.substring(index2+1,index22);
+        String ri2=s2.substring(index22+1);
+        int sum2=365*Integer.parseInt(nian2.trim())+30*Integer.parseInt(yue2.trim())+Integer.parseInt(ri2.trim());
+        if(sum1>sum2)
+        {
+            int sh=sum1-sum2;
+            System.out.println("第一个日期大，时隔天数为"+sh);
+        }
+        if(sum1<sum2)
+        {
+            int sh=sum2-sum1;
+            System.out.println("第二个日期大，时隔天数为"+sh);
+        }
+        if(sum1==sum2)
+        {
+            System.out.println("两个日期相同");
+        }
+    }
+}
