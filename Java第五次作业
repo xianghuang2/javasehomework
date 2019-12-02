@@ -39,3 +39,35 @@ public class FindMess {
     }
 
 }
+
+第二题：
+public class CaiDan {
+    public static void main(String args[])
+    {
+        String caidan="北京烤鸭：189元，西芹炒肉：12.9元，酸菜鱼：69元，铁板牛柳：32元。";
+        int index=caidan.indexOf("：");
+        int index2=caidan.indexOf("元");
+        String number1=caidan.substring(index+1,index2);
+        int number11=Integer.parseInt(number1.trim());
+        System.out.println("北京烤鸭的价格为："+number11);
+        index=caidan.indexOf("：",index+1);
+        index2=caidan.indexOf("元",index2+1);
+        String number2=caidan.substring(index+1,index2);
+        float number22=Integer.parseFloat(number2.trim());
+        System.out.println("西芹炒肉的价格为："+number22);
+        index=caidan.indexOf("：",index+1);
+        index2=caidan.indexOf("元",index2+1);
+        String number3=caidan.substring(index+1,index2);
+        number3=number3.trim();
+        int number33=Integer.parseInt(number3);
+        System.out.println("酸菜鱼的价格为："+number33);
+        index=caidan.indexOf("：",index+1);
+        index2=caidan.indexOf("元",index2+1);
+        String number4=caidan.substring(index+1,index2);
+        number4=number4.trim();
+        int number44=Integer.parseInt(number4);
+        System.out.println("铁板牛柳的价格为："+number44);
+        float s=number11+number22+number33+number44;
+        System.out.println("总价格为："+s);
+    }
+}
