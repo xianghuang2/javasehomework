@@ -1,3 +1,63 @@
 第一题：
 输出结果为：ABCDEFG
            ABCDEFGEF
+ FileOutputStream out=new FileOutputStream("hello.txt");
+  byte content[]="ABCDEFG".getBytes();
+  out.write(content);
+  给out中写入字节"ABCDEFG"
+   while((m=in.read(tom,0,3))!=-1){
+                String s1=new String(tom,0,m);
+                bufferOne.append(s1);
+                String s2=new String(tom,0,3);
+                bufferTwo.append(s2);
+            }
+    循环语句， String s1=new String(tom,0,m);s1为从tom[]中的第0个数到第m个数
+                bufferOne.append(s1);给bufferOne用s1赋值
+                 String s2=new String(tom,0,3);s2从tom[]中的第0个数到第3个数
+                bufferTwo.append(s2);给bufferTwo用s2赋值
+              故buffer one=ABCDEFG;buffer two=ABCDEFGEF
+ 第二题：
+ package com.bj;
+import com.sun.source.tree.WhileLoopTree;
+
+import java.io.*;
+import java.io.IOException;
+
+public class F {
+    public static void main(String args[]) throws IOException
+    {
+        try{
+        String s1="C:\\newFile.txt";
+        String s2="C:\\newFile.jpg";
+        String s3="D:\\newFile.ipg";
+        String shuchu;
+        BufferedReader read=new BufferedReader(new FileReader(s1));
+       // BufferedWriter writer=new BufferedWriter(new FileWriter(s1));
+        shuchu=read.readLine();
+        while(shuchu!=null)
+        {
+            System.out.println(shuchu);
+            shuchu=read.readLine();
+        }
+        read.close();
+        BufferedInputStream read1=new BufferedInputStream(new FileInputStream(s2));
+        BufferedOutputStream read2=new BufferedOutputStream(new FileOutputStream(s3));
+        int shuchu2;
+        shuchu2=read1.read();
+        while(shuchu2!=-1)
+        {
+            read2.write(shuchu2);
+            shuchu2=read1.read();
+        }
+        read.close();
+        read1.close();
+        read2.close();
+        File f2=new File(s2);
+        f2.delete();
+        }
+        catch(Exception io)
+        {
+            System.out.println("Problem Writing:"+io.getMessage());
+        }
+    }
+}
