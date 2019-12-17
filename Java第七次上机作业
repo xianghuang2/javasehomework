@@ -1,0 +1,90 @@
+第一题：
+1：package com.bj;
+
+public class Test1 {
+     public static void main(String args[])
+     {
+         xina Xi=new xina();
+         yinwen yin=new yinwen();
+         Xi.start();
+         yin.start();
+     }
+}
+class xina extends Thread{
+    public void run()
+    {
+        int firstnum;
+        int lastnum;
+        char first1='α';
+        char last1='ω';
+        firstnum=(int)first1;
+        lastnum=(int)last1;
+        for(int i=firstnum;i<=lastnum;i++)
+        {
+            char ch=(char)i;
+            System.out.print(ch+" ");
+        }
+    }
+}
+class yinwen extends Thread{
+    public void run()
+    {
+        int firstnum;
+        int lastnum;
+        char first1='a';
+        char last1='z';
+        firstnum=(int)first1;
+        lastnum=(int)last1;
+        for(int i=firstnum;i<=lastnum;i++)
+        {
+            char ch=(char)i;
+            System.out.print(ch+" ");
+        }
+    }
+}
+2：
+package com.bj;
+
+public class Test2 {
+    public static void main(String args[])
+    {
+        Xina xina=new Xina();
+        Yinwen yinwen=new Yinwen();
+        Thread shuchu1=new Thread(xina);
+        Thread shuchu2=new Thread(yinwen);
+        shuchu1.start();
+        shuchu2.start();
+    }
+}
+class Xina implements Runnable{
+    public void run()
+    {
+        int firstnum;
+        int lastnum;
+        char first1='α';
+        char last1='ω';
+        firstnum=(int)first1;
+        lastnum=(int)last1;
+        for(int i=firstnum;i<=lastnum;i++)
+        {
+            char ch=(char)i;
+            System.out.print(ch+" ");
+        }
+    }
+}
+class Yinwen implements Runnable{
+    public void run()
+    {
+        int firstnum;
+        int lastnum;
+        char first1='a';
+        char last1='z';
+        firstnum=(int)first1;
+        lastnum=(int)last1;
+        for(int i=firstnum;i<=lastnum;i++)
+        {
+            char ch=(char)i;
+            System.out.print(ch+" ");
+        }
+    }
+}
