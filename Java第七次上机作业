@@ -154,3 +154,52 @@ class ClassRoom implements Runnable{
         }
     }
 }
+第三题：
+package com.bj;
+
+public class Test4 {
+    public static void main(String args[])
+    {
+        shuchu out1=new shuchu();
+        shuchu out2=new shuchu();
+        out1.setName("字母");
+        out2.setName("希腊");
+        out1.start();
+        out2.start();
+    }
+}
+class shuchu extends Thread{
+    public void run()
+    {
+       shuchu1();
+    }
+    public synchronized void shuchu1()
+    {
+        if(Thread.currentThread().getName().equals("希腊"))
+        {
+            int firstnum=(int)'α';
+            int lastnum=(int)'ω';
+            for(int i=firstnum;i<=lastnum;i++)
+            {
+                try{
+                    Thread.sleep(50);}
+                catch(InterruptedException e){
+                }
+                char ch=(char)i;
+                System.out.print(ch+" ");
+            }
+
+        }
+        else if(Thread.currentThread().getName().equals("字母"))
+        {
+            int firstnum=(int)'a';
+            int lastnum=(int)'z';
+
+                for(int i=firstnum;i<=lastnum;i++)
+            {
+                char ch=(char)i;
+                System.out.print(ch+" ");
+            }
+        }
+    }
+}
