@@ -88,3 +88,69 @@ class Yinwen implements Runnable{
         }
     }
 }
+第二题：
+package com.bj;
+
+import java.util.TreeMap;
+
+public class Test3 {
+public static void main(String args[])
+{
+    ClassRoom room=new ClassRoom();
+    room.stu1.start();
+    room.stu2.start();
+    room.teacher.start();
+}
+}
+class ClassRoom implements Runnable{
+    Thread stu1,stu2,teacher;
+    ClassRoom(){
+        teacher=new Thread(this);
+        stu1=new Thread(this);
+        stu2=new Thread(this);
+        teacher.setName("老师");
+        stu1.setName("李四");
+        stu2.setName("王五");
+    }
+    public void run()
+    {
+        if(Thread.currentThread()==stu1)
+        {
+            try{
+                System.out.println(stu1.getName()+"正在睡觉");
+                Thread.sleep(1000*60*10);
+            }
+            catch (InterruptedException e)
+            {
+                System.out.println(stu1.getName()+"被老师叫醒");
+            }
+            System.out.println(stu1.getName()+"开始上课");
+            stu2.interrupt();
+        }
+        else if(Thread.currentThread()==stu2)
+        {
+            try{
+                System.out.println(stu2.getName()+"正在睡觉");
+                Thread.sleep(1000*60*50);
+            }
+            catch (InterruptedException e)
+            {
+                System.out.println(stu2.getName()+"被老师叫醒");
+            }
+            System.out.println(stu2.getName()+"开始上课");
+        }
+        else if(Thread.currentThread()==teacher)
+        {
+            for(int i=0;i<3;i++)
+            {
+                System.out.println("上课");
+                try{
+                    Thread.sleep(500);
+                }
+                catch(InterruptedException e){
+                }
+            }
+            stu1.interrupt();
+        }
+    }
+}
