@@ -203,3 +203,91 @@ class shuchu extends Thread{
         }
     }
 }
+第四题：
+package com.bj;
+public class Test5 {
+public static void main(String args[])
+{
+   shoupiao Sh=new shoupiao();
+   Thread ren1=new Thread(Sh);
+   Thread ren2=new Thread(Sh);
+   Thread ren3=new Thread(Sh);
+    ren1.setName("张");
+   ren2.setName("孙");
+   ren3.setName("赵");
+   ren1.start();
+    ren2.start();
+    ren3.start();
+}
+}
+class shoupiao implements Runnable{
+    int fiveamount=1;
+    int tenamount=0;
+    int twentyamount=0;
+    public void run()
+    {
+        if(Thread.currentThread().getName().equals("孙"))
+        {
+            jinqu(10);
+        }
+        if(Thread.currentThread().getName().equals("张"))
+        {
+            jinqu(20);
+        }
+        if(Thread.currentThread().getName().equals("赵"))
+        {
+            jinqu(5);
+        }
+    }
+    public  synchronized void jinqu(int amount)
+    {
+
+        if(amount==5)
+        {
+            fiveamount++;
+            try{
+                Thread.sleep(500);
+                System.out.println(Thread.currentThread().getName()+"可以入场");
+            }
+            catch(InterruptedException e){}
+        }
+        else if(amount==10) {
+            while (fiveamount == 0) {
+                try {
+                    Thread.sleep(50);
+                    System.out.println(Thread.currentThread().getName() + "钱找不开，请等待");
+                    wait();
+                    System.out.println(Thread.currentThread().getName() + "可以继续买票");
+                } catch (InterruptedException e) {
+                }
+
+            }
+            fiveamount--;
+            tenamount++;
+            try {
+                Thread.sleep(50);
+                System.out.println(Thread.currentThread().getName() + "可以入场");
+            } catch (InterruptedException ew) {
+            }
+        }
+        else if(amount==20)
+        {
+
+            while (tenamount<1)
+            {
+                try {
+                System.out.println(Thread.currentThread().getName() + "钱找不开，请等待");
+                wait();
+                System.out.println(Thread.currentThread().getName() + "可以继续买票");
+            }
+                catch(InterruptedException e){
+                }
+        }
+            twentyamount++;
+            fiveamount-=1;
+            tenamount-=1;
+            System.out.println(Thread.currentThread().getName()+"可以入场");
+        }
+        notifyAll();
+    }
+}
